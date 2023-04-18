@@ -1,12 +1,11 @@
 const express = require('express')
 
+const routes = require("./routes")
+
 const app = express()
 
-app.get("/users", (request, response) => {
-  const {page, limit} = request.query
-
-  response.send(`Página: ${page}. Mostrar${limit}`)
-})
+app.use(express.json())
+app.use(routes)
 
 const PORT = 3333
 app.listen(PORT, () => console.log(`Server listening on ${PORT}`))
