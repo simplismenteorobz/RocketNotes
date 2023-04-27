@@ -1,11 +1,15 @@
 const { Router } = require("express")
 
+const usersController = require("../controllers/usersController")
+
 const usersRoutes = Router()
 
-usersRoutes.post("/", (request, response) => {
-  const { name, email, password } = request.body
+function myMiddleware(request, response, next) {
+  next()
+}
 
-  response.send(`Usuários: ${name}; Email: ${email} e a Senha: ${password}`)
-})
+const UsersController = new usersController()
+
+usersRoutes.post("/", myMiddleware, UsersController.create)
 
 module.exports = usersRoutes
