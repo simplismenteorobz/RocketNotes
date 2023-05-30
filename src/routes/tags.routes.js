@@ -6,6 +6,6 @@ const tagsRoutes = Router()
 
 const TagsController = new tagsController()
 
-tagsRoutes.get("/", TagsController.index)
+tagsRoutes.get("/:user_id", TagsController.index)
 
 module.exports = tagsRoutes
